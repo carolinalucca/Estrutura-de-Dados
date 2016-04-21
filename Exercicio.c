@@ -11,6 +11,8 @@ int contemValor(int *pont, int value);
 int contValor(int *pont, int value);
 void inverter(int *pont);
 void meios(int *pont);
+void preencherVetores();
+void preencherOrdenarVetores();
 
 int main() {
 	//to use somes words
@@ -66,10 +68,14 @@ int main() {
 				system("pause");
 				break;
 			case 8:
-				
+				system("cls");
+				preencherVetores();
+				system("pause");
 				break;	
 			case 9:
-				
+				system("cls");
+				preencherOrdenarVetores(); //com os vetores com tamanho 2 e 4 dão erro 
+				system("pause");
 				break;				
 			case 10:
     			exit(0);
@@ -94,7 +100,7 @@ int menu() {
 		printf("7 - Mostrar ordem inversa\n");
 		printf("8 - Unir 2 vetores em um terceiro vetor\n");
 		printf("9 - Unir 2 vetores em um terceiro vetor, mantendo ordenado\n");
-		printf("10 - Sair da aplicaÃ§Ã£o\n");
+		printf("10 - Sair da aplicação\n");
 		printf("\n");
 		printf("escolha a opção: ");
 		scanf("%d", &op);
@@ -228,5 +234,133 @@ void meios(int *pont) {
 	for(i = 0; i < (n-2); i++) { 
 		printf("O valor na %dº posição é: %d\n", i+1, *pont);
 		pont++;
+	}
+}
+
+void preencherVetores() {
+	int a,b,c,i;
+	
+	printf("Informe o tamanho do primeiro vetor: ");
+	scanf("%d", &a);
+	printf("Informe o tamanho do segundo vetor: ");
+	scanf("%d", &b);
+	
+	c=a+b;
+	
+	int v1[a];
+	int v2[b];	
+	int *aux;
+	
+	aux = v1;
+	system("cls");
+	printf("Vamos preencher o primeiro vetor: \n");
+	for(i = 0; i < a; i++) {
+		printf("Informe o valor para a %dº posição: ", i+1);
+		scanf("%d", aux);
+		aux++;
+	}
+	printf("\n");
+	aux = v2;
+	system("cls");
+	printf("Vamos preencher o primeiro vetor: \n");
+	for(i = 0; i < b; i++) {
+		printf("Informe o valor para a %dº posição: ", i+1);
+		scanf("%d", aux);
+		aux++;
+	}
+	
+	int vetor[c];
+	
+	int *t1;
+	int *t2;
+	t1 = v1;
+	t2 = v2;
+	for(i = 0; i < a; i++) {
+		vetor[i] = *t1;
+		t1++;
+	}
+	int j;
+	for(j = 0; j < a; i++) {
+		vetor[i+j] = *t2;
+		t2++;
+	}
+	
+	aux = vetor;
+	printf("\n");printf("\n");
+	for(i = 0; i < c; i++) {
+		printf("O valor na %dº posição é: %d\n", i+1, *aux);
+		aux++;
+	}
+}
+
+void preencherOrdenarVetores() {
+	int a,b,c,i;
+	
+	printf("Informe o tamanho do primeiro vetor: ");
+	scanf("%d", &a);
+	printf("Informe o tamanho do segundo vetor: ");
+	scanf("%d", &b);
+	
+	c=a+b;
+	
+	int v1[a];
+	int v2[b];	
+	int *aux;
+	
+	aux = v1;
+	system("cls");
+	printf("Vamos preencher o primeiro vetor: \n");
+	for(i = 0; i < a; i++) {
+		printf("Informe o valor para a %dº posição: ", i+1);
+		scanf("%d", aux);
+		aux++;
+	}
+	printf("\n");
+	aux = v2;
+	system("cls");
+	printf("Vamos preencher o primeiro vetor: \n");
+	for(i = 0; i < b; i++) {
+		printf("Informe o valor para a %dº posição: ", i+1);
+		scanf("%d", aux);
+		aux++;
+	}
+	
+	int vetor[c];
+	
+	int *t1;
+	int *t2;
+	t1 = v1;
+	t2 = v2;
+	for(i = 0; i < a; i++) {
+		vetor[i] = *t1;
+		t1++;
+	}
+	int j;
+	for(j = 0; j < a; i++) {
+		vetor[i+j] = *t2;
+		t2++;
+	}
+
+	//sort an array ASC
+	aux = vetor;
+	int t;
+	for(i = 0; i < n; i++) {
+       for(j=0;j<n;j++)
+       {
+           if( *(aux+i) < *(aux+j))
+           {
+               t = *(aux+i);
+
+               *(aux+i) = *(aux+j);
+               *(aux+j) = t;
+           }
+       }
+	}
+	
+	aux = vetor;
+	printf("\n");printf("\n");
+	for(i = 0; i < c; i++) {
+		printf("O valor na %dº posição é: %d\n", i+1, *aux);
+		aux++;
 	}
 }
