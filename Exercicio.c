@@ -10,6 +10,7 @@ int menorValor(int *pont);
 int contemValor(int *pont, int value);
 int contValor(int *pont, int value);
 void inverter(int *pont);
+void meios(int *pont);
 
 int main() {
 	//to use somes words
@@ -39,7 +40,9 @@ int main() {
 				system("pause");
 				break;
 			case 4:
-				
+				system("cls");
+				meios(array);
+				system("pause");
 				break;
 			case 5:
 			    printf("Informe um valor para verificação: \n");
@@ -211,5 +214,19 @@ void inverter(int *pont) {
 	for(i = 0; i < n; i++) { 
 		printf("O valor na %dº posição é: %d\n", i+1, *aux);
 		aux++;
+	}
+}
+
+/*
+Excluidos o primeiro e o ultimo elemento, pois os restantes possuem elementos em ambos os lados,
+ou seja, estão no meio o vetor.
+2 ou menos elementos não serão exibidos.
+*/
+void meios(int *pont) {
+	int i;
+	pont++;
+	for(i = 0; i < (n-2); i++) { 
+		printf("O valor na %dº posição é: %d\n", i+1, *pont);
+		pont++;
 	}
 }
