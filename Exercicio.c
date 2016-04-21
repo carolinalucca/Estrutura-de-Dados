@@ -8,6 +8,8 @@ void popularOrdenarArray(int *pont);
 int maiorValor(int *pont);
 int menorValor(int *pont);
 int contemValor(int *pont, int value);
+int contValor(int *pont, int value);
+void inverter(int *pont);
 
 int main() {
 	//to use somes words
@@ -24,7 +26,9 @@ int main() {
 	
 		switch(opcao) {
 			case 1:
+				system("cls");
 				popularOrdenarArray(array);
+				system("pause");
 				break;
 			case 2:
 				printf("O maior elemento é: %d\n", maiorValor(array));
@@ -46,10 +50,24 @@ int main() {
 					printf("O valor %d NÃO foi encontrado no vetor !\n",val);
 				system("pause");
 				break;
+			case 6:
+				printf("Informe um valor para verificação: \n");
+			    scanf("%d", &val);
+				printf("O valor %d apareceu %d vez(es) no vetor !\n", val,contValor(array,val));
+				system("pause");
+				break;
+			case 7:
+				system("cls");
+				printf("Ordem inversa: \n");
+				inverter(array);
+				system("pause");
+				break;
+			case 8:
 				
+				break;	
+			case 9:
 				
-				
-				
+				break;				
 			case 10:
     			exit(0);
 				break;	
@@ -75,7 +93,7 @@ int menu() {
 		printf("9 - Unir 2 vetores em um terceiro vetor, mantendo ordenado\n");
 		printf("10 - Sair da aplicaÃ§Ã£o\n");
 		printf("\n");
-		printf("escolha a opÃ§Ã£o: ");
+		printf("escolha a opção: ");
 		scanf("%d", &op);
 	} while (op == 0 || op < 0 || op > 10);
 }         
@@ -94,11 +112,11 @@ void popularOrdenarArray(int *pont) {
 	//reset aux
 	aux = pont;
 	
-	//sort an array
+	//sort an array ASC
 	for(i = 0; i < n; i++) {
        for(j=0;j<n;j++)
        {
-           if( *(aux+i) > *(aux+j))
+           if( *(aux+i) < *(aux+j))
            {
                t = *(aux+i);
 
@@ -156,4 +174,42 @@ int contemValor(int *pont, int value) {
 		aux++;
 	}
 	return 0;
+}
+
+int contValor(int *pont, int value) {
+	int *aux;
+	aux = pont;
+	int i,cont = 0;
+	
+	for(i = 0; i < n; i++) {
+		if(*aux == value)
+			cont++;
+		aux++;
+	}
+	return cont;
+}
+
+void inverter(int *pont) {
+	int *aux;
+	aux = pont;
+	int i,j,t;
+			
+	//sort an array DESC
+	for(i = 0; i < n; i++) {
+       for(j=0;j<n;j++)
+       {
+           if( *(aux+i) > *(aux+j))
+           {
+               t = *(aux+i);
+
+               *(aux+i) = *(aux+j);
+               *(aux+j) = t;
+           }
+       }
+	}
+	
+	for(i = 0; i < n; i++) { 
+		printf("O valor na %dº posição é: %d\n", i+1, *aux);
+		aux++;
+	}
 }
