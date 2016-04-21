@@ -7,6 +7,7 @@ int menu();
 void popularOrdenarArray(int *pont);
 int maiorValor(int *pont);
 int menorValor(int *pont);
+int contemValor(int *pont, int value);
 
 int main() {
 	//to use somes words
@@ -16,6 +17,7 @@ int main() {
 	scanf("%d", &n);
 	
 	int array[n];
+	int val;
 	
 	while(1 < 2) {
 		int opcao = menu();
@@ -33,10 +35,16 @@ int main() {
 				system("pause");
 				break;
 			case 4:
-			
+				
 				break;
 			case 5:
-			
+			    printf("Informe um valor para verificação: \n");
+			    scanf("%d", &val);
+				if(contemValor(array, val) == 1)
+					printf("O valor %d foi encontrado no vetor !\n",val);
+				else
+					printf("O valor %d NÃO foi encontrado no vetor !\n",val);
+				system("pause");
 				break;
 				
 				
@@ -135,4 +143,17 @@ int menorValor(int *pont) {
 		aux++;
 	}
 	return max;
+}
+
+int contemValor(int *pont, int value) {
+	int *aux;
+	aux = pont;
+	int i;
+	
+	for(i = 0; i < n; i++) {
+		if(*aux == value)
+			return 1;
+		aux++;
+	}
+	return 0;
 }
