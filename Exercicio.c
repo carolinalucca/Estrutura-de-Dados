@@ -5,18 +5,48 @@
 int n;
 int menu();
 void popularOrdenarArray(int *pont);
+int maiorValor(int *pont);
+int menorValor(int *pont);
 
 int main() {
-	setlocale(LC_ALL, "portuguese");
+	//to use somes words
+	setlocale(LC_ALL, "Portuguese");
 	
 	printf("Informe o valor para o 'n': ");
 	scanf("%d", &n);
 	
 	int array[n];
 	
-	//int opcao = menu();
+	while(1 < 2) {
+		int opcao = menu();
 	
-	popularOrdenarArray(array);
+		switch(opcao) {
+			case 1:
+				popularOrdenarArray(array);
+				break;
+			case 2:
+				printf("O maior elemento é: %d\n", maiorValor(array));
+				system("pause");
+				break;
+			case 3:
+				printf("O Menor elemento é: %d\n", menorValor(array));
+				system("pause");
+				break;
+			case 4:
+			
+				break;
+			case 5:
+			
+				break;
+				
+				
+				
+				
+			case 10:
+    			exit(0);
+				break;	
+		}
+	}
 	
 	return 0;
 }
@@ -24,8 +54,8 @@ int main() {
 int menu() {
 	int op = 0;
 	do {
-		system("cls");
-		printf("*****************************************************************\n");
+		system("cls"); //clear the CMD
+		printf("*****************************************************************\n"); // Create a menu
 		printf("1 - Preencher o vetor e mostrar ordenado\n");
 		printf("2 - Mostrar maior elemento do vetor\n");
 		printf("3 - Mostrar menor elemento do vetor\n");
@@ -43,19 +73,66 @@ int menu() {
 }         
           
 void popularOrdenarArray(int *pont) {
+	//New variable to storage the pointer value
 	int *aux;
 	aux = pont;
+	int i,j,t;
 	//input values for the array
-	for(int i = 0; i < n; i++) {
-		printf("Informe o valor para a %dÂº posiÃ§Ã£o: ", i+1);
-		scanf("%d", pont);
-		pont++; //'walking' with the pointer 'index'
+	for(i = 0; i < n; i++) {
+		printf("Informe o valor para a %dº posição: ", i+1);
+		scanf("%d", aux);
+		aux++; //'walking' with the pointer 'index'
 	}
-	//sort an array
+	//reset aux
+	aux = pont;
 	
-	printf("\n");
-	for(int i = 0; i < n; i++) {
-		printf("O valor na %dÂº posiÃ§Ã£o Ã©: %d\n", i+1, *aux);
+	//sort an array
+	for(i = 0; i < n; i++) {
+       for(j=0;j<n;j++)
+       {
+           if( *(aux+i) > *(aux+j))
+           {
+               t = *(aux+i);
+
+               *(aux+i) = *(aux+j);
+               *(aux+j) = t;
+           }
+       }
+	}
+	
+	printf("\nMostrando os valores ordernados\n"); //showing the values in screen
+	for(i = 0; i < n; i++) { 
+		printf("O valor na %dº posição é: %d\n", i+1, *aux);
 		aux++;
 	}
+}
+
+int maiorValor(int *pont) {
+	int *aux;
+	aux = pont;
+	int i;
+	
+	int max = *aux;
+	
+	for(i = 0; i < n; i++) {
+		if(*aux > max)
+			max = *aux;
+		aux++;
+	}
+	return max;
+}
+
+int menorValor(int *pont) {
+	int *aux;
+	aux = pont;
+	int i;
+	
+	int max = *aux;
+	
+	for(i = 0; i < n; i++) {
+		if(*aux < max)
+			max = *aux;
+		aux++;
+	}
+	return max;
 }
