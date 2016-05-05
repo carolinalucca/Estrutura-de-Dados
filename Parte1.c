@@ -16,6 +16,16 @@ int main() {
 	
 	float **matriz = Alocar_matriz_dinamica(linha, coluna);
 	
+	float **aux = matriz;
+	int i, j;
+	for(i = 0; i < linha; i++) {
+		for(j = 0; j < coluna; j++) {
+			printf("Informe o valor para a posição [%d][%d] = %.2f \t", i+1, j+1, **(aux+j) );
+		}
+		printf("\n");
+		**(aux+i);
+	}
+	
 	//Parte 2
 	
 	Liberar_matriz_dinamica(linha, matriz);
