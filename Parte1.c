@@ -16,6 +16,8 @@ int main() {
 	
 	float **matriz = Alocar_matriz_dinamica(linha, coluna);
 	
+	
+	Liberar_matriz_dinamica(linha, matriz);
 	return 0;
 }
 
