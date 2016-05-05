@@ -16,6 +16,7 @@ int main() {
 	
 	float **matriz = Alocar_matriz_dinamica(linha, coluna);
 	
+	//Parte 2
 	
 	Liberar_matriz_dinamica(linha, matriz);
 	return 0;
@@ -28,6 +29,14 @@ float **Alocar_matriz_dinamica(int l, int c) {
 	int i;
 	for (i = 0; i < l; i++)
 		matriz[i] = (float *) malloc(l * sizeof(float));
+		
+	int j;
+	for(i = 0; i < l; i++) {
+		for(j = 0; j < c; j++) {
+			printf("Informe o valor para a posição [%d][%d]", i+1, j+1);
+			scanf("%f", &(*(*(matriz+i)+j)));
+		}
+	}
 	
 	return matriz;
 }
