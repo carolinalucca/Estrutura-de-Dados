@@ -21,11 +21,11 @@ int main() {
 
 float **Alocar_matriz_dinamica(int l, int c) {
 	float **matriz;
-	matriz = (float**) malloc(l * sizeof(int *));
+	matriz = (float**) malloc(l * sizeof(float *));
 	
 	int i;
 	for (i = 0; i < l; i++)
-		matriz[i] = (float *) malloc(l * sizeof(int));
+		matriz[i] = (float *) malloc(l * sizeof(float));
 	
 	return matriz;
 }
