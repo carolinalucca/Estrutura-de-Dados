@@ -1,14 +1,14 @@
 #include <stdlib.h>
 
-int equals(char *string1, char *string2);
-int equalsIgnoreCase(char *string1, char *string2);
+int equals(char *string1, char *string2); //DONE
+int equalsIgnoreCase(char *string1, char *string2); //DONE
 char[] substring(char *string1, char *string2, int posInicial, int posFinal);
-int length(char *string);
+int length(char *string); //DONE
 void toUpperCase(char *string);
 void toLowerCase(char *string);
 void replace(char *string, char velhoCaracter, char novoCaracter);
-int lastIndexOf(char *string, char letra);
-int firstIndexOf(char *string, char letra);
+int lastIndexOf(char *string, char letra); //DONE
+int firstIndexOf(char *string, char letra); //DONE
 
 int main() {
 	return 0;
@@ -45,6 +45,23 @@ int length(char *string) { //it's counting spaces
 	return cont;
 }
 
+void toUpperCase(char *string) { // DON'T WORKING YET !
+	int i, j;
+	for(i = 0;i <= length(string); i++) {
+		if((int)string[i] >= 97 || (int)string[i] <= 122)
+			string[j] = (int)string[j] - 32;
+		j++;
+	}	
+}
+
+void replace(char *string, char velhoCaracter, char novoCaracter) {
+	int i;
+	for(i = 0;i <= length(string); i++) {
+		if(string[i] == velhoCaracter)
+			string[i] = novoCaracter;
+	}
+}
+
 int lastIndexOf(char *string, char letra) {
 	int index;
 	for(index=length(string)-1;nome[index]!=letra;index--); 
@@ -56,4 +73,11 @@ int lastIndexOf(char *string, char letra) {
 }
 
 int firstIndexOf(char *string,char letra) {
+	int index;
+	for(index=0;string[index]!=letra;index++); 
+	
+	if(index < length(string)) 
+		return 0;
+      
+	return ++index;
 }
