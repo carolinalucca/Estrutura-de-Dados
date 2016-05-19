@@ -2,11 +2,11 @@
 
 int equals(char *string1, char *string2); //DONE
 int equalsIgnoreCase(char *string1, char *string2); //DONE
-char[] substring(char *string1, char *string2, int posInicial, int posFinal);
+void substring(char *string1, char *string2, int posInicial, int posFinal); //DONE
 int length(char *string); //DONE
-void toUpperCase(char *string);
-void toLowerCase(char *string);
-void replace(char *string, char velhoCaracter, char novoCaracter);
+void toUpperCase(char *string); //DONE
+void toLowerCase(char *string); //DONE
+void replace(char *string, char velhoCaracter, char novoCaracter); //DONE
 int lastIndexOf(char *string, char letra); //DONE
 int firstIndexOf(char *string, char letra); //DONE
 
@@ -35,6 +35,15 @@ int equalsIgnoreCase(char *string1, char *string2) { // 0 - false | 1 - true
 	return 1;
 }
 
+void substring(char *string1, char *string2, int posInicial, int posFinal){
+	    int i;
+	
+		for(i = 0; i + posInicial <= posFinal; i++) {
+		string2[i] = string1[i + posInicial];
+    	}   
+}
+
+
 int length(char *string) { //it's counting spaces
 	char *aux;
 	int cont = 0;
@@ -45,13 +54,22 @@ int length(char *string) { //it's counting spaces
 	return cont;
 }
 
-void toUpperCase(char *string) { // DON'T WORKING YET !
+void toUpperCase(char *string) {
 	int i, j;
 	for(i = 0;i <= length(string); i++) {
-		if((int)string[i] >= 97 || (int)string[i] <= 122)
-			string[j] = (int)string[j] - 32;
-		j++;
-	}	
+		if((int)string[i] >= 97 && (int)string[i] <= 122) {
+			string[i] = (int)string[i] - 32;
+		}
+	}
+}
+
+void toLowerCase(char *string) { 
+	int i, j;
+	for(i = 0;i <= length(string); i++) {
+		if((int)string[i] >= 97 && (int)string[i] <= 122) {
+			string[i] = (int)string[i] + 32;
+		}
+	}
 }
 
 void replace(char *string, char velhoCaracter, char novoCaracter) {
@@ -64,7 +82,7 @@ void replace(char *string, char velhoCaracter, char novoCaracter) {
 
 int lastIndexOf(char *string, char letra) {
 	int index;
-	for(index=length(string)-1;nome[index]!=letra;index--); 
+	for(index=length(string)-1;string[index]!=letra;index--); 
 	
 	if(index < 0) 
 		return 0;
