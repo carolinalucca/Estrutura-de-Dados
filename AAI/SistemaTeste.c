@@ -19,7 +19,7 @@ int main() {
 	String string = NEW;
 
 	int users;
-	printf("Informe a quantidade de usu·rio que devem ser cadastrados: ");
+	printf("Informe a quantidade de usu√°rio que devem ser cadastrados: ");
 	scanf("%d", &users);
 	
 	usuario *u;
@@ -27,28 +27,28 @@ int main() {
 	
 	system("cls");
 	
-	printf("|**** CADASTRANDO OS USU¡RIOS NO SISTEMA ****|\n");
+	printf("|**** CADASTRANDO OS USU√ÅRIOS NO SISTEMA ****|\n");
 	int i;
 	for(i = 0; i < users; i++) {
 		do {
-			printf("Informe o nome do Usu·rio %d: ", i+1);
+			printf("Informe o nome do Usu√°rio %d: ", i+1);
 			fflush(stdin);
 			gets(u->nome);
 		} while (1 != 1);
 		printf("\n");
 		do {
-			printf("Informe o endereÁo do Usu·rio %d: ", i+1);
+			printf("Informe o endere√ßo do Usu√°rio %d: ", i+1);
 			fflush(stdin);
 			gets(u->endereco);
 		} while (1 != 1);
 		printf("\n");
 		do {
-			printf("Informe a data de nascimento do Usu·rio %d: ", i+1);
+			printf("Informe a data de nascimento do Usu√°rio %d: ", i+1);
 			fflush(stdin);
 			gets(u->dataNascimento);
 		} while ((string.firstIndexOf(u->dataNascimento, '/') != 3) || (string.lastIndexOf(u->dataNascimento, '/') != 6));
 		printf("\n");
-		printf("|****                       PROXÕMO                       ****|\n");
+		printf("|****                       PROX√çMO                       ****|\n");
 	}
 	
 	system("cls");
@@ -59,13 +59,18 @@ int main() {
 		case 1:
 			op = Menu1();
 			if(op == 1) {
-				// Mostrar n˙mero da casa
+				// Mostrar n√∫mero da casa
+				char numero[5];
+				for(i = 0; i < users; i++) {
+				    string.substring(u->endereco, numero, string.firstIndexOf(u->endereco, ','), string.length(u->endereco));
+					printf("N√∫mero da casa: %s \n", numero);
+				}
 			} else if(op == 2) {
 				// Mostrar ano de nascimento
 			} else if(op == 3) {
 				// Mostrar mes de nascimento
 			} else if(op == 4) {
-				// Mostrar dia de nasciment
+				// Mostrar dia de nascimento
 			} else if(op == 5) {
 				// Mostrar ultimo nome
 			} else if(op == 6) {
@@ -79,7 +84,7 @@ int main() {
 		case 2:
 			op = Menu2();
 			if(op == 1) {
-				// Pesquisa pelo n∫ casa
+				// Pesquisa pelo n¬∫ casa
 			} else if(op == 2) {
 				// Pesquisa pelo sobrenome
 			} else if(op == 3) {
@@ -116,11 +121,11 @@ int MenuPrincipal() {
 int Menu1() {
 	int opcao = 0;
 	printf("|**************************************************|\n");
-	printf("| 1 - Mostrar apenas o n˙mero da casa              |\n");
+	printf("| 1 - Mostrar apenas o n√∫mero da casa              |\n");
 	printf("| 2 - Mostrar Ano do nascimento                    |\n");
-	printf("| 3 - Mostrar MÍs do nascimento                    |\n");
+	printf("| 3 - Mostrar M√™s do nascimento                    |\n");
 	printf("| 4 - Mostrar Dia do nascimento                    |\n");
-	printf("| 5 - Mostrar qual o ˙ltimo Sobrenome              |\n");
+	printf("| 5 - Mostrar qual o √∫ltimo Sobrenome              |\n");
 	printf("| 6 - Mostrar o primeiro nome                      |\n");
 	printf("| 7 - Mostrar os nomes do meio, caso houver        |\n");
 	printf("| 8, 9 ou outro - SAIR                             |\n");
@@ -134,10 +139,10 @@ int Menu1() {
 int Menu2() {
 	int opcao = 0;
 	printf("|**************************************************|\n");
-	printf("| 1 - Buscar por n˙mero de casa                    |\n");
+	printf("| 1 - Buscar por n√∫mero de casa                    |\n");
 	printf("| 2 - Buscar pessoas pelo sobrenome                |\n");
 	printf("| 3 - Buscar pessoas pelo ano de nascimento        |\n");
-	printf("| 4 - Buscar pessoas pelo mÍs de nascimento        |\n");
+	printf("| 4 - Buscar pessoas pelo m√™s de nascimento        |\n");
 	printf("| 5, 6 ou outro - SAIR                             |\n");
 	printf("|**************************************************|");
 	printf("\n");
@@ -172,7 +177,7 @@ int Menu2() {
 			//if(data < 13 && data > 0) {
 			if(mes < 13 && mes > 0) {
 				//string.substring(u->dataNascimento, data, 6, 9);
-				//printf("(%s) ¨", data);
+				//printf("(%s) ¬¨", data);
 				//if(data < 2016 && data > 1900)
 				if(ano < 2016 && ano > 1900)
 					return 1;
