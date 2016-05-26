@@ -85,6 +85,20 @@ int main() {
 			op = Menu2();
 			if(op == 1) {
 				// Pesquisa pelo nº casa
+				printf("Informe o número para pesquisa: ");
+				fflush(stdin);
+				char numeroPesquisa[5];
+				gets(numeroPesquisa);
+			
+				char numero[5];
+				for(i = 0; i < users; i++) {
+				    string.substring(u->endereco, numero, string.firstIndexOf(u->endereco, ','), string.length(u->endereco));
+					if(string.equals(numeroPesquisa,numero) == 1){
+						printf("\nNome do Usuário %s: ", u->nome);		
+						printf("\nEndereço do Usuário %s: ", u->endereco);		
+						printf("\nData de nascimento do Usuário %s: ", u->dataNascimento);			
+					}
+				}
 			} else if(op == 2) {
 				// Pesquisa pelo sobrenome
 			} else if(op == 3) {
